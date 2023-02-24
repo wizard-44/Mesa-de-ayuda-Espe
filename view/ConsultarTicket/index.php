@@ -23,7 +23,7 @@
 
 	<div class="page-content">
 		<div class="container-fluid">
-			Blank page.
+            
 		</div>
 	</div>
     <?php
