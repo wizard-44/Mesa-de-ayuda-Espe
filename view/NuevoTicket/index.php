@@ -7,7 +7,7 @@
     <?php
         require_once("../MainHead/head.php");
     ?>
-	<title>Dashboard</title>
+	<title>Nuevo Ticket</title>
 </head>
 <body class="with-side-menu">
 
@@ -29,7 +29,7 @@
     <?php
         require_once("../MainJS/js.php");
     ?>
-    <script>type="text/javascript" src="home.js"</script>
+    <script>type="text/javascript" src="nuevoticket.js"</script>
 	
 </body>
 </html>
