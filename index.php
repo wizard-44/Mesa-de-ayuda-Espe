@@ -36,11 +36,18 @@
     <div class="page-center">
         <div class="page-center-in">
             <div class="container-fluid">
+
                 <form class="sign-box" action="" method="post" id="login_form">
+
+                    <input type="hidden" id="rol_id" name="rol_id" value="1">
+                    
+                    <header class="sign-title">Iniciar Sesión</header>
+
                     <div class="sign-avatar">
                         <img src="public/img/avatar-sign.png" alt="">
                     </div>
-                    <header class="sign-title">Iniciar Sesión</header>
+
+                    <header class="sign-title" id="lbltitulo">Usuario</header>
 
                     <!-- TODO: validar segun valor al iniciar session -->
                     <?php
@@ -83,6 +90,9 @@
                         <div class="float-right reset">
                             <a href="reset-password.html">Restablecer Contraseña</a>
                         </div>
+                        <div class="float-left reset">
+                            <a href="#" id="btnsoporte">Acceso Soporte</a>
+                        </div>
                     </div>
                     <input type="hidden" name="enviar" class="form-control" value="si">
                     <button type="submit" class="btn btn-rounded">Iniciar Sesión</button>
@@ -114,5 +124,7 @@
         });
     </script>
 <script src="public/js/app.js"></script>
+<script type="text/javascript" src="index.js"></script>
+
 </body>
 </html>
