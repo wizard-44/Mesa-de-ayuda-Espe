@@ -65,5 +65,26 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
+
+        public function listar_ticketdetalle_x_ticket($tick_id){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="SELECT
+                td_ticketdetalle.tickd_id,
+                td_ticketdetalle.tickd_descrip,
+                td_ticketdetalle.fech_crea,
+                tm_usuario.usu_nom,
+                tm_usuario.usu_ape,
+                tm_usuario.rol_id
+                FROM 
+                td_ticketdetalle
+                INNER JOIN tm_usuario on td_ticketdetalle.usu_id = tm_usuario.usu_id
+                WHERE
+                tick_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $tick_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
     }
 ?>

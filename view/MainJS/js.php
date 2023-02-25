@@ -12,3 +12,6 @@
 
 	<!-- Script para las tablas -->
 	<script src="../../public/js/lib/datatables-net/datatables.min.js"></script>
+
+	<!-- Script para detalle ticket -->
+	<script src="../../public/js/lib/fancybox/jquery.fancybox.pack.js"></script>

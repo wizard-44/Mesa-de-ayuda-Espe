@@ -122,7 +122,7 @@ $(document).ready(function(){
 });
 
 function ver(tick_id){
-    console.log(tick_id)
+    window.open('http://localhost/MESA-DE-AYUDA-ESPE/view/DetalleTicket/?ID='+tick_id+'');
 }
 
 init();
