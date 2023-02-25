@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
 		<a href="" class="site-logo"> 
-			<img src="../../public/img/Logo_Espe.png" alt="Logo ESPE" width="183" height="67">
+			<img src="../../public/img/Logo_Espe.png" alt="Logo ESPE" width="165" height="72">
 		</a>
 
         <button id="show-hide-sidebar-toggle" class="show-hide-sidebar">
