@@ -25,3 +25,7 @@
 	<!-- estilos para las tablas -->
 	<link rel="stylesheet" href="../../public/css/lib/datatables-net/datatables.min.css">
 	<link rel="stylesheet" href="../../public/css/separate/vendor/datatables-net.min.css">
+
+	<!-- Estilos para detalle de ticket -->
+	<link rel="stylesheet" href="../../public/css/separate/vendor/fancybox.min.css">
+	<link rel="stylesheet" href="../../public/css/separate/pages/activity.min.css">
