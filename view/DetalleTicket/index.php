@@ -74,7 +74,7 @@
 
 			</section>
 
-            <div class="box-typical box-typical-padding">
+            <div class="box-typical box-typical-padding" id="pnldetalle">
 				<p>Ingrese su duda o consulta</p>
 
                 <div class="row">

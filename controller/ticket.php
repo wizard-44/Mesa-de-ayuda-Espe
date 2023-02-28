@@ -12,6 +12,7 @@
             break;
         case "update":
             $ticket->update_ticket($_POST["tick_id"]);
+            $ticket->insert_ticketdetalle_cerrar($_POST["tick_id"],$_POST["usu_id"]);
             break;
         case "listar_x_usu":
             $datos=$ticket->listar_ticket_x_usu($_POST["usu_id"]);
@@ -140,7 +141,7 @@
                         $output["tick_estado"] = '<span class="label label-pill label-danger">Cerrado</span>';
                     }
 
-                    //$output["tick_estado_texto"] = $row["tick_estado"];
+                    $output["tick_estado_texto"] = $row["tick_estado"];
 
                     $output["fech_crea"] = date("d/m/Y H:i:s", strtotime($row["fech_crea"]));
                     //$output["fech_cierre"] = date("d/m/Y H:i:s", strtotime($row["fech_cierre"]));
