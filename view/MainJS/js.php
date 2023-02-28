@@ -6,6 +6,7 @@
 
 	<!-- Script para habilitar cuadro de descripcion -->
 	<script src="../../public/js/lib/summernote/summernote.min.js"></script>
+	<script src="../../public/js/summernote-ES.js"></script>
 
 	<!-- Script para las notificaciones -->
 	<script src="../../public/js/lib/bootstrap-sweetalert/sweetalert.min.js"></script>
