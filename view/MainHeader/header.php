@@ -23,7 +23,7 @@
                     </div>
                     <div class="dropdown user-menu">
                         <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="../../public/<?php echo $_SESSION["rol_id"] ?>.jpg" alt="">
+                            <img src="../../public/<?php echo $_SESSION["rol_id"] ?>.png" alt="">
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
                             <a class="dropdown-item" href="../MntPerfil/"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>

@@ -27,13 +27,13 @@
     <link rel="stylesheet" href="public/css/main.css">
 </head>
 <body>
-    <div class="barra_espe2">
-        Usted no se ha identificado.
-    </div>
-    <div class="barra_espe">
-        <a href=""> <img src="public/img/Logo_Espe.png" alt="Logo ESPE" width="183" height="67"> </a>
-    </div>
     <div class="page-center">
+            <div class="barra_espe2">
+                Usted no se ha identificado.
+            </div>
+            <div class="barra_espe">
+                <a href=""> <img src="public/img/Logo_Espe.png" alt="Logo ESPE" width="183" height="67"> </a>
+            </div>
         <div class="page-center-in">
             <div class="container-fluid">
 
@@ -44,7 +44,7 @@
                     <header class="sign-title">Iniciar Sesión</header>
 
                     <div class="sign-avatar">
-                        <img src="public/img/avatar-sign.png" alt="">
+                        <img src="public/1.png" alt="" id="imgtipo">
                     </div>
 
                     <header class="sign-title" id="lbltitulo">Usuario</header>
