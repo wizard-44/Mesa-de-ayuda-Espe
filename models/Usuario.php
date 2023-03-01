@@ -47,8 +47,8 @@
             return $resultado=$sql->fetchAll();
         }
 
-        public function update_usuario(){
-            $conectar= parent::conexion($usu_id,$usu_nom,$usu_ape,$usu_correo,$usu_pass,$rol_id);
+        public function update_usuario($usu_id,$usu_nom,$usu_ape,$usu_correo,$usu_pass,$rol_id){
+            $conectar= parent::conexion();
             parent::set_names();
             $sql="UPDATE tm_usuario SET
                 usu_nom=?,
