@@ -14,7 +14,10 @@
 }
 
 .barra_espe{
-    background: #000;
+  background: #000;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .barra_espe2{
@@ -22,6 +25,9 @@
   text-align: right;
   color: white;
   height: 50px;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .label:empty {
@@ -6308,12 +6314,11 @@ var.result-container {
   color: #0082c6;
 }
 .page-center {
-  display: table;
   width: 100%;
   border-collapse: collapse;
 }
 .page-center-in {
-  display: table-cell;
+  align-items: center;
   vertical-align: middle;
   padding: 15px 0;
 }
