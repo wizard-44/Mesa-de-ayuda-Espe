@@ -2,7 +2,7 @@
     /* TODO:Cadena de Conexion */
     require_once("../config/conexion.php");
     /* TODO:Modelo Categoria */
-    require_once("../models/Categoria.php");
+    require_once("../models/Usuario.php");
     $usuario = new Usuario();
 
     switch($_GET["op"]){
@@ -24,12 +24,12 @@
                 $sub_array[] = $row["usu_nom"];
                 $sub_array[] = $row["usu_ape"];
                 $sub_array[] = $row["usu_correo"];
-                $sub_array[] = $row["rol_pass"];
+                $sub_array[] = $row["usu_pass"];
 
-                if($row["usu_rol"]=="1"){
-                    $sub_array[] = '<span class="label label-pill label-primary">Usuario</span>';
+                if($row["rol_id"]=="1"){
+                    $sub_array[] = '<span class="label label-pill label-success">Usuario</span>';
                 }else{
-                    $sub_array[] = '<span class="label label-pill label-primary">Soporte</span>';
+                    $sub_array[] = '<span class="label label-pill label-info">Soporte</span>';
                 }
 
                 $sub_array[] = '<button type="button" onClick="editar('.$row["usu_id"].');"  id="'.$row["usu_id"].'" class="btn btn-inline btn-warning btn-sm ladda-button"><i class="fa fa-edit"></i></button>';
