@@ -45,5 +45,24 @@
             echo json_encode($results);
         break;
 
+        case "eliminar":
+            $usuario->delete_usuario($_POST["usu_id"]);
+        break;
+
+        case "mostrar";
+            $datos=$usuario->get_usuario_x_id($_POST["usu_id"]);  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["usu_id"] = $row["usu_id"];
+                    $output["usu_nom"] = $row["usu_nom"];
+                    $output["usu_ape"] = $row["usu_ape"];
+                    $output["usu_correo"] = $row["usu_correo"];
+                    $output["usu_pass"] = $row["usu_pass"];
+                    $output["rol_id"] = $row["rol_id"];
+                }
+                echo json_encode($output);
+            }
+        break;
     }
 ?>
