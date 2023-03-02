@@ -3,10 +3,18 @@ var usu_id = $('#user_idx').val();
 var rol_id = $('#rol_idx').val();
 
 function init(){
-
+    $("#ticket_form").on("submit",function(e){
+        guardar(e);	
+    });
 }
 
 $(document).ready(function(){
+
+    /* LLenar Combo usuario asignar */
+    $.post("../../controller/usuario.php?op=combo", function (data) {
+        $('#usu_asig').html(data);
+    });
+
     if(rol_id==1){
 
         tabla=$('#ticket_data').dataTable({
@@ -120,6 +128,50 @@ $(document).ready(function(){
 
     }
 });
+
+/* Mostrar datos antes de asignar */
+function asignar(tick_id){
+    $.post("../../controller/ticket.php?op=mostrar", {tick_id : tick_id}, function (data) {
+        data = JSON.parse(data);
+        $('#tick_id').val(data.tick_id);
+
+        $('#mdltitulo').html('Asignar Agente');
+        $("#modal_asignar").modal('show');
+    });
+}
+
+/* Guardar asignacion de usuario de soporte */
+function guardar(e){
+    e.preventDefault();
+	var formData = new FormData($("#ticket_form")[0]);
+    $.ajax({
+        url: "../../controller/ticket.php?op=asignar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos){
+            // var tick_id = $('#tick_id').val();
+            // /* enviar Email de alerta de asignacion */
+            // $.post("../../controller/email.php?op=ticket_asignado", {tick_id : tick_id}, function (data) {
+
+            // });
+
+            // /* enviar Whaspp de alerta de asignacion */
+            // $.post("../../controller/whatsapp.php?op=w_ticket_asignado", {tick_id : tick_id}, function (data) {
+
+            // });
+
+            /*  Alerta de confirmacion */
+            swal("Ticket Asignado!", "Ticket Asignado Correctamente", "success");
+
+            /*  Ocultar Modal */
+            $("#modal_asignar").modal('hide');
+            /* TODO:Recargar Datatable JS */
+            $('#ticket_data').DataTable().ajax.reload();
+        }
+    });
+}
 
 function ver(tick_id){
     window.open('http://localhost/MESA-DE-AYUDA-ESPE/view/DetalleTicket/?ID='+tick_id+'');
