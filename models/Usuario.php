@@ -142,7 +142,7 @@
             return $resultado=$sql->fetchAll();
         }
 
-        /* TODO: Total de Tickets por categoria segun usuario */
+        /* Total de Tickets por categoria segun usuario */
         public function get_usuario_grafico($usu_id){
             $conectar= parent::conexion();
             parent::set_names();
@@ -157,6 +157,22 @@
                 ORDER BY total DESC";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        /* Actualizar contraseña del usuario */
+        public function update_usuario_pass($usu_id,$usu_pass){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="UPDATE tm_usuario
+                SET
+                    usu_pass = MD5(?)
+                WHERE
+                    usu_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $usu_pass);
+            $sql->bindValue(2, $usu_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
