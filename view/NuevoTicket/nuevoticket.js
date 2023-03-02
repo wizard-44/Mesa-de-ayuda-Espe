@@ -16,7 +16,16 @@ $(document).ready(function() {
             onPaste: function (e) {
                 console.log("Text detect...");
             }
-        }
+        },
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+        ]
+
     });
 
     $.post("../../controller/categoria.php?op=combo",function(data,status){
@@ -30,6 +39,13 @@ function guardaryeditar(e){
     if ($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val()=='' ){
         swal("Advertencia!", "Campos Vacios", "warning");
     }else{
+
+        var totalfiles = $('#fileElem').val().length;
+        for (var i = 0; i < totalfiles; i++) {
+            formData.append("files[]", $('#fileElem')[0].files[i]);
+        }
+        
+        /*  Guardar Ticket */
         $.ajax({
             url: "../../controller/ticket.php?op=insert",
             type: "POST",
@@ -40,6 +56,7 @@ function guardaryeditar(e){
                 console.log(data);
                 $('#tick_titulo').val("");
                 $('#tick_descrip').summernote("reset");
+                $('#fileElem').val("");
                 swal("Correcto!", "Registrado Correctamente: ","success");
             }
         });

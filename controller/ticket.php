@@ -1,17 +1,54 @@
 <?php
-    /* TODO:Cadena de Conexion */
+    /* Cadena de Conexion */
     require_once("../config/conexion.php");
-    /* TODO:Modelo Categoria */
+    /* Modelo Categoria */
     require_once("../models/Ticket.php");
     $ticket = new Ticket();
-
+    /* Modelo Categoria */
     require_once("../models/Usuario.php");
     $usuario = new Usuario();
+    /* :Modelo Categoria */
+    require_once("../models/Documento.php");
+    $documento = new Documento();
 
     switch($_GET["op"]){
         
         case "insert":
-            $ticket->insert_ticket($_POST["usu_id"],$_POST["cat_id"],$_POST["tick_titulo"],$_POST["tick_descrip"]);
+            $datos = $ticket->insert_ticket($_POST["usu_id"],$_POST["cat_id"],$_POST["tick_titulo"],$_POST["tick_descrip"]);
+            if (is_array($datos)==true and count($datos)>0){
+                foreach ($datos as $row){
+                    $output["tick_id"] = $row["tick_id"];
+
+                    /* Validamos si vienen archivos desde la Vista */
+                    if (empty($_FILES['files']['name'])){
+
+                    }else{
+                        /* Contar Cantidad de Archivos desde la Vista */
+                        $countfiles = count($_FILES['files']['name']);
+                        /*  Generamos ruta segun el ID del ultimo registro insertado */
+                        $ruta = "../public/documentos/".$output["tick_id"]."/";
+                        $files_arr = array();
+
+                        /* Preguntamos si la ruta existe, en caso no exista la creamos */
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta, 0777, true);
+                        }
+
+                        /* Recorremos los archivos, y insertamos tantos detalles como documentos vinieron desde la vista */
+                        for ($index = 0; $index < $countfiles; $index++) {
+                            $doc1 = $_FILES['files']['tmp_name'][$index];
+                            $destino = $ruta.$_FILES['files']['name'][$index];
+
+                            /* Insertamos Documentos */
+                            $documento->insert_documento( $output["tick_id"],$_FILES['files']['name'][$index]);
+
+                            /* Movemos los archivos hacia la carpeta creada */
+                            move_uploaded_file($doc1,$destino);
+                        }
+                    }
+                }
+            }
+            echo json_encode($datos);
             break;
         case "update":
             $ticket->update_ticket($_POST["tick_id"]);
@@ -198,7 +235,7 @@
         case "insertdetalle";
             $ticket->insert_ticketdetalle($_POST["tick_id"],$_POST["usu_id"],$_POST["tickd_descrip"]);  
             break;
-        /* TODO: Total de ticket para vista de soporte */
+        /* : Total de ticket para vista de soporte */
         case "total";
             $datos=$ticket->get_ticket_total();  
             if(is_array($datos)==true and count($datos)>0){
@@ -210,7 +247,7 @@
             }
             break;
 
-        /* TODO: Total de ticket Abierto para vista de soporte */
+        /* : Total de ticket Abierto para vista de soporte */
         case "totalabierto";
             $datos=$ticket->get_ticket_totalabierto();  
             if(is_array($datos)==true and count($datos)>0){
@@ -222,7 +259,7 @@
             }
             break;
 
-        /* TODO: Total de ticket Cerrados para vista de soporte */
+        /* : Total de ticket Cerrados para vista de soporte */
         case "totalcerrado";
             $datos=$ticket->get_ticket_totalcerrado();  
             if(is_array($datos)==true and count($datos)>0){
@@ -233,7 +270,7 @@
                 echo json_encode($output);
             }
             break;
-        /* TODO: Formato Json para grafico de soporte */
+        /* : Formato Json para grafico de soporte */
         case "grafico";
             $datos=$ticket->get_ticket_grafico();  
             echo json_encode($datos);

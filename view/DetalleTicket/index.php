@@ -60,10 +60,27 @@
 
                     <div class="col-lg-12">
                         <fieldset class="form-group">
+                            <label class="form-label semibold" for="tick_titulo">Documentos Adicionales</label>
+                            <table id="documentos_data" class="table table-bordered table-striped table-vcenter">
+                                <thead>
+                                <tr>
+                                    <th style="width: 90%;">Nombre</th>
+                                    <th class="text-center" style="width: 10%;"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </fieldset>    
+                    </div>  
+
+                    <div class="col-lg-12">
+                        <fieldset class="form-group">
                             <label class="form-label semibold" for="tickd_descripusu">Descripción</label>
                             <div class="summernote-theme-1">
-                                    <textarea id="tickd_descripusu" name="tickd_descripusu" class="summernote" name="name"></textarea>
-                                </div>
+                                <textarea id="tickd_descripusu" name="tickd_descripusu" class="summernote" name="name"></textarea>
+                            </div>
                         </fieldset>
                     </div>
 
@@ -77,7 +94,7 @@
             <div class="box-typical box-typical-padding" id="pnldetalle">
 				<p>Ingrese su duda o consulta</p>
 
-                <div class="row">
+                <div class="row">  
 
                     <div class="col-lg-12">
                         <fieldset class="form-group">

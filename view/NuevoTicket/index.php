@@ -47,7 +47,7 @@
                         
                         <input type="hidden" id="usu_id" name="usu_id" value="<?php echo $_SESSION["usu_id"] ?>">
                         
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <fieldset class="form-group">
                                 <label class="form-label semibold" for="tick_titulo">Titulo</label>
                                 <input type="text" class="form-control" id="tick_titulo" name="tick_titulo" placeholder="Ingrese Titulo">
@@ -60,6 +60,13 @@
                                 <select id="cat_id" name="cat_id" class="form-control"><select>
                             </fieldset>
                         </div>
+
+                        <div class="col-lg-6">
+							<fieldset class="form-group">
+								<label class="form-label semibold" for="exampleInput">Documentos Adicionales</label>
+								<input type="file" name="fileElem" id="fileElem" class="form-control" multiple>
+							</fieldset>
+						</div>
 
                         <div class="col-lg-12">
                             <fieldset class="form-group">
