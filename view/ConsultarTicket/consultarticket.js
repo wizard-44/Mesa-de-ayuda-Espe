@@ -177,4 +177,37 @@ function ver(tick_id){
     window.open('http://localhost/MESA-DE-AYUDA-ESPE/view/DetalleTicket/?ID='+tick_id+'');
 }
 
+/* Reabrir ticket */
+function CambiarEstado(tick_id){
+    swal({
+        title: "HelpDesk",
+        text: "Esta seguro de Reabrir el Ticket?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonClass: "btn-warning",
+        confirmButtonText: "Si",
+        cancelButtonText: "No",
+        closeOnConfirm: false
+    },
+    function(isConfirm) {
+        if (isConfirm) {
+            /* TODO: Enviar actualizacion de estado */
+            $.post("../../controller/ticket.php?op=reabrir", {tick_id : tick_id,usu_id : usu_id}, function (data) {
+
+            });
+
+            /* TODO:Recargar datatable js */
+            $('#ticket_data').DataTable().ajax.reload();	
+
+            /* TODO: Mensaje de Confirmacion */
+            swal({
+                title: "Ticket Abierto!",
+                text: "El Ticket ha sido Abierto Nuevamente.",
+                type: "success",
+                confirmButtonClass: "btn-success"
+            });
+        }
+    });
+}
+
 init();
