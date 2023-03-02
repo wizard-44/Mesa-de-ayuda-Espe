@@ -29,3 +29,7 @@
 	<!-- Estilos para detalle de ticket -->
 	<link rel="stylesheet" href="../../public/css/separate/vendor/fancybox.min.css">
 	<link rel="stylesheet" href="../../public/css/separate/pages/activity.min.css">
+
+	<!-- Estilos para Select2 -->
+	<link rel="stylesheet" href="../../public/css/separate/vendor/select2.min.css">
+
