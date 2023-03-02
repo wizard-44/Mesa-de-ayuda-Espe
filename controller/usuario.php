@@ -64,5 +64,47 @@
                 echo json_encode($output);
             }
         break;
+        
+        /* Cantidad de Tickets por Usuario en formato JSON */
+        case "total";
+            $datos=$usuario->get_usuario_total_x_id($_POST["usu_id"]);  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["TOTAL"] = $row["TOTAL"];
+                }
+                echo json_encode($output);
+            }
+            break;
+
+        /* Cantidad de Ticket Abiertos por Usuario en formato JSON */
+        case "totalabierto";
+            $datos=$usuario->get_usuario_totalabierto_x_id($_POST["usu_id"]);  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["TOTAL"] = $row["TOTAL"];
+                }
+                echo json_encode($output);
+            }
+            break;
+
+        /* TODO: Cantidad de Ticket Cerrados por Usuario en formato JSON */
+        case "totalcerrado";
+            $datos=$usuario->get_usuario_totalcerrado_x_id($_POST["usu_id"]);  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["TOTAL"] = $row["TOTAL"];
+                }
+                echo json_encode($output);
+            }
+            break;
+        /* TODO: Formato Json segun cantidad de ticket por categoria por usuario */
+        case "grafico";
+            $datos=$usuario->get_usuario_grafico($_POST["usu_id"]);  
+            echo json_encode($datos);
+            break;
+
     }
 ?>
