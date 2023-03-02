@@ -155,10 +155,50 @@
                 }
                 echo json_encode($output);
             }
-        break;
+            break;
         case "insertdetalle";
             $ticket->insert_ticketdetalle($_POST["tick_id"],$_POST["usu_id"],$_POST["tickd_descrip"]);  
-        break;
-        
+            break;
+        /* TODO: Total de ticket para vista de soporte */
+        case "total";
+            $datos=$ticket->get_ticket_total();  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["TOTAL"] = $row["TOTAL"];
+                }
+                echo json_encode($output);
+            }
+            break;
+
+        /* TODO: Total de ticket Abierto para vista de soporte */
+        case "totalabierto";
+            $datos=$ticket->get_ticket_totalabierto();  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["TOTAL"] = $row["TOTAL"];
+                }
+                echo json_encode($output);
+            }
+            break;
+
+        /* TODO: Total de ticket Cerrados para vista de soporte */
+        case "totalcerrado";
+            $datos=$ticket->get_ticket_totalcerrado();  
+            if(is_array($datos)==true and count($datos)>0){
+                foreach($datos as $row)
+                {
+                    $output["TOTAL"] = $row["TOTAL"];
+                }
+                echo json_encode($output);
+            }
+            break;
+        /* TODO: Formato Json para grafico de soporte */
+        case "grafico";
+            $datos=$ticket->get_ticket_grafico();  
+            echo json_encode($datos);
+            break;
+
     }
 ?>
