@@ -28,15 +28,25 @@ $(document).ready(function() {
 
     });
 
+    /* Llenar Combo categoria */
     $.post("../../controller/categoria.php?op=combo",function(data,status){
         $('#cat_id').html(data);
+    });
+
+    $("#cat_id").change(function(){
+        cat_id = $(this).val();
+        /* llenar Combo subcategoria segun cat_id */
+        $.post("../../controller/subcategoria.php?op=combo",{cat_id : cat_id},function(data, status){
+            console.log(data);
+            $('#cats_id').html(data);
+        });
     });
 });
 
 function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#ticket_form")[0]);
-    if ($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val()=='' ){
+    if ($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val()=='' ||  $('#cats_id').val()=='' ){
         swal("Advertencia!", "Campos Vacios", "warning");
     }else{
 

@@ -188,6 +188,7 @@ function listardetalle(tick_id){
         $('#lblnomidticket').html("Detalle Ticket - "+data.tick_id);
         $('#tick_titulo').val(data.tick_titulo);
         $('#cat_nom').val(data.cat_nom);
+        $('#cats_nom').val(data.cats_nom);
         $('#tickd_descripusu').summernote('code',data.tick_descrip);
         if(data.tick_estado_texto == "Cerrado"){
             $('#pnldetalle').hide();
