@@ -89,7 +89,7 @@
             }
             break;
 
-        /* TODO: Cantidad de Ticket Cerrados por Usuario en formato JSON */
+        /* Cantidad de Ticket Cerrados por Usuario en formato JSON */
         case "totalcerrado";
             $datos=$usuario->get_usuario_totalcerrado_x_id($_POST["usu_id"]);  
             if(is_array($datos)==true and count($datos)>0){
@@ -100,10 +100,22 @@
                 echo json_encode($output);
             }
             break;
-        /* TODO: Formato Json segun cantidad de ticket por categoria por usuario */
+        /* Formato Json segun cantidad de ticket por categoria por usuario */
         case "grafico";
             $datos=$usuario->get_usuario_grafico($_POST["usu_id"]);  
             echo json_encode($datos);
+            break;
+        /* Formato para llenar combo en formato HTML */
+        case "combo";
+            $datos = $usuario->get_usuario_x_rol();
+            if(is_array($datos)==true and count($datos)>0){
+                $html.= "<option label='Seleccionar'></option>";
+                foreach($datos as $row)
+                {
+                    $html.= "<option value='".$row['usu_id']."'>".$row['usu_nom']."</option>";
+                }
+                echo $html;
+            }
             break;
 
     }

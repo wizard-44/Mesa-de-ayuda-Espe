@@ -47,9 +47,9 @@
                             <!-- <th class="d-none d-sm-table-cell" style="width: 5%;">Prioridad</th> -->
                             <th class="d-none d-sm-table-cell" style="width: 5%;">Estado</th>
                             <th class="d-none d-sm-table-cell" style="width: 10%;">Fecha Creación</th>
-                            <!-- <th class="d-none d-sm-table-cell" style="width: 10%;">Fecha Asignación</th>
-                            <th class="d-none d-sm-table-cell" style="width: 10%;">Fecha Cierre</th>
-                            <th class="d-none d-sm-table-cell" style="width: 10%;">Soporte</th> -->
+                            <th class="d-none d-sm-table-cell" style="width: 10%;">Fecha Asignación</th>
+                            <!-- <th class="d-none d-sm-table-cell" style="width: 10%;">Fecha Cierre</th> -->
+                            <th class="d-none d-sm-table-cell" style="width: 10%;">Soporte</th>
                             <th class="text-center" style="width: 5%;"></th>
                         </tr>
                     </thead>
@@ -60,9 +60,9 @@
             </div>
 		</div>
 	</div>
-    <?php
-        require_once("../MainJS/js.php");
-    ?>
+    <?php require_once("modal_asignar.php"); ?>
+    <?php require_once("../MainJS/js.php"); ?>
+
     <script type="text/javascript" src="consultarticket.js"></script>
 	
 </body>
