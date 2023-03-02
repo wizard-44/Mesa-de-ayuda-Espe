@@ -6,6 +6,10 @@ function init(){
 
 $(document).ready(function(){
 
+    $('#rol_id').select2({
+        dropdownParent: $('#modal_nuevo_registro')
+    });
+
     tabla=$('#usuario_data').dataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -62,7 +66,8 @@ $(document).ready(function(){
 });
 
 function editar(usu_id){
-    
+    // $('#mdltitulo').html('Nuevo Registro');
+    // $('#modal_nuevo_registro').modal('show');
 }
 
 function eliminar(usu_id){
@@ -101,5 +106,10 @@ function eliminar(usu_id){
         }
     });
 }
+
+$(document).on("click","#btnnuevo",function(){
+    $('#mdltitulo').html('Nuevo Registro');
+    $('#modal_nuevo_registro').modal('show');
+});
 
 init();

@@ -16,3 +16,6 @@
 
 	<!-- Script para detalle ticket -->
 	<script src="../../public/js/lib/fancybox/jquery.fancybox.pack.js"></script>
+
+	<!-- SCript para el Select2 -->
+	<script src="../../public/js/lib/select2/select2.full.min.js"></script>

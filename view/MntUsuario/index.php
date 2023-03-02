@@ -38,6 +38,7 @@
             </header>
 
             <div class="box-typical box-typical-padding">
+                <button type="button" id="btnnuevo" class="btn btn-inline btn-primary">Nuevo Registro</button>
                 <table id="usuario_data" class="table table-bordered table-striped table-vcenter js-dataTable-full">
                     <thead>
                         <tr>
@@ -57,9 +58,10 @@
             </div>
 		</div>
 	</div>
-    <?php
-        require_once("../MainJS/js.php");
-    ?>
+
+    <?php require_once("modal_nuevo_registro.php"); ?>
+    <?php require_once("../MainJS/js.php"); ?>
+    
     <script type="text/javascript" src="mntusuario.js"></script>
 	
 </body>
