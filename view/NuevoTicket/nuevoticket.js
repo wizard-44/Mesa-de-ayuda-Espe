@@ -53,7 +53,14 @@ function guardaryeditar(e){
             contentType: false,
             processData: false,
             success: function(data){
-                console.log(data);
+                data = JSON.parse(data);
+                console.log(data[0].tick_id);
+
+                /* Envio de alerta Email de ticket Abierto */
+                $.post("../../controller/email.php?op=ticket_abierto", {tick_id : data[0].tick_id}, function (data) {
+
+                });
+
                 $('#tick_titulo').val("");
                 $('#tick_descrip').summernote("reset");
                 $('#fileElem').val("");

@@ -60,6 +60,7 @@
                 tm_ticket.fech_crea,
                 tm_usuario.usu_nom,
                 tm_usuario.usu_ape,
+                tm_usuario.usu_correo,
                 tm_categoria.cat_nom
                 FROM 
                 tm_ticket

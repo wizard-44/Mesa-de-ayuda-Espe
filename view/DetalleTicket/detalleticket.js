@@ -148,7 +148,15 @@ $(document).on("click","#btncerrarticket",function(){
             $.post("../../controller/ticket.php?op=update", { tick_id : tick_id, usu_id : usu_id  }, function (data) {
                 data = JSON.parse(data);    
             });
+
+            /* Alerta de ticket cerrado via email */
+            $.post("../../controller/email.php?op=ticket_cerrado", {tick_id : tick_id}, function (data) {
+
+            });
+
+            /* Llamamos a funcion listardetalle */
             listardetalle(tick_id);
+
             swal({
                 title: "Ticket Cerrado",
                 text: "El ticket ha sido cerrado correctamente.",
