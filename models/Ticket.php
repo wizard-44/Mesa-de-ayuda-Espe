@@ -60,6 +60,8 @@
                 tm_ticket.tick_descrip,
                 tm_ticket.tick_estado,
                 tm_ticket.fech_crea,
+                tm_ticket.tick_estre,
+                tm_ticket.tick_coment,
                 tm_usuario.usu_nom,
                 tm_usuario.usu_ape,
                 tm_usuario.usu_correo,
@@ -262,6 +264,24 @@
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1, $tick_id);
             $sql->bindValue(2, $usu_id);
+            $sql->execute();
+            return $resultado=$sql->fetchAll();
+        }
+
+        /* TODO: Actualizar valor de estrellas de encuesta */
+        public function insert_encuesta($tick_id,$tick_estre,$tick_comment){
+            $conectar= parent::conexion();
+            parent::set_names();
+            $sql="update tm_ticket 
+                set	
+                    tick_estre = ?,
+                    tick_coment = ?
+                where
+                    tick_id = ?";
+            $sql=$conectar->prepare($sql);
+            $sql->bindValue(1, $tick_estre);
+            $sql->bindValue(2, $tick_comment);
+            $sql->bindValue(3, $tick_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
