@@ -25,8 +25,8 @@ function listardetalle(tick_id){
         $('#cat_nom').val(data.cat_nom);
         $('#cats_nom').val(data.cats_nom);
         $('#tick_titulo').val(data.tick_titulo);
-        // $('#prio_nom').val(data.prio_nom);
-        // $('#lblfechcierre').val(data.fech_cierre);
+        $('#prio_nom').val(data.prio_nom);
+        $('#lblfechcierre').val(data.fech_cierre);
 
         if (data.tick_estado_texto=='Abierto') {
             window.open('http://localhost/MESA-DE-AYUDA-ESPE/','_self');
