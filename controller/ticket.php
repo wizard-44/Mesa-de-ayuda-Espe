@@ -230,8 +230,8 @@
                     $output["usu_ape"] = $row["usu_ape"];
                     $output["cat_nom"] = $row["cat_nom"];
                     $output["cats_nom"] = $row["cats_nom"];
-                    //$output["tick_estre"] = $row["tick_estre"];
-                    //$output["tick_coment"] = $row["tick_coment"];
+                    $output["tick_estre"] = $row["tick_estre"];
+                    $output["tick_coment"] = $row["tick_coment"];
                     //$output["prio_nom"] = $row["prio_nom"];
                 }
                 echo json_encode($output);
@@ -240,7 +240,7 @@
         case "insertdetalle";
             $ticket->insert_ticketdetalle($_POST["tick_id"],$_POST["usu_id"],$_POST["tickd_descrip"]);  
             break;
-        /* : Total de ticket para vista de soporte */
+        /* Total de ticket para vista de soporte */
         case "total";
             $datos=$ticket->get_ticket_total();  
             if(is_array($datos)==true and count($datos)>0){
@@ -252,7 +252,7 @@
             }
             break;
 
-        /* : Total de ticket Abierto para vista de soporte */
+        /* Total de ticket Abierto para vista de soporte */
         case "totalabierto";
             $datos=$ticket->get_ticket_totalabierto();  
             if(is_array($datos)==true and count($datos)>0){
@@ -264,7 +264,7 @@
             }
             break;
 
-        /* : Total de ticket Cerrados para vista de soporte */
+        /* Total de ticket Cerrados para vista de soporte */
         case "totalcerrado";
             $datos=$ticket->get_ticket_totalcerrado();  
             if(is_array($datos)==true and count($datos)>0){
@@ -275,11 +275,14 @@
                 echo json_encode($output);
             }
             break;
-        /* : Formato Json para grafico de soporte */
+        /* Formato Json para grafico de soporte */
         case "grafico";
             $datos=$ticket->get_ticket_grafico();  
             echo json_encode($datos);
             break;
-
+        /* Insertar valor de encuesta,estrellas y comentarios */
+        case "encuesta":
+            $ticket->insert_encuesta($_POST["tick_id"],$_POST["tick_estre"],$_POST["tick_coment"]);
+            break;
     }
 ?>
