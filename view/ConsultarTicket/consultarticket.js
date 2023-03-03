@@ -15,6 +15,11 @@ $(document).ready(function(){
         $('#usu_asig').html(data);
     });
 
+    /* TODO: llenar Combo Prioridad */
+    $.post("../../controller/prioridad.php?op=combo",function(data, status){
+        $('#prio_id').html(data);
+    });
+    
     if(rol_id==1){
 
         tabla=$('#ticket_data').dataTable({

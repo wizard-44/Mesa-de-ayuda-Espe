@@ -190,6 +190,7 @@ function listardetalle(tick_id){
         $('#cat_nom').val(data.cat_nom);
         $('#cats_nom').val(data.cats_nom);
         $('#tickd_descripusu').summernote('code',data.tick_descrip);
+        $('#prio_nom').val(data.prio_nom);
         if(data.tick_estado_texto == "Cerrado"){
             $('#pnldetalle').hide();
         }
