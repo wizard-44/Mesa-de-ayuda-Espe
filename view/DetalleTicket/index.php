@@ -119,6 +119,14 @@
                         </fieldset>
                     </div>
 
+                    <!-- TODO: Agregar archivos adjuntos -->
+                    <div class="col-lg-12">
+                        <fieldset class="form-group">
+                        <label class="form-label semibold" for="fileElem">Documentos Adicionales</label>
+                        <input type="file" name="fileElem" id="fileElem" class="form-control" multiple>
+                        </fieldset>
+                    </div>
+
                     <div class="col-lg-12">
                         <button type="button" id="btnenviar" class="btn btn-inline btn-primary">Enviar</button>
                         <button type="button" id="btncerrarticket" class="btn btn-inline btn-danger">Cerrar Ticket</button>

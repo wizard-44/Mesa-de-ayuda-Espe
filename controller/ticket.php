@@ -206,6 +206,41 @@
                                                 <p> 
                                                     <?php echo $row["tickd_descrip"]; ?>
                                                 </p>
+                                                <br>
+                                                <?php
+                                                    $datos_det=$documento->get_documento_detalle_x_ticketd($row["tickd_id"]);
+                                                    if(is_array($datos_det)==true and count($datos_det)>0){
+                                                        ?>
+                                                            <p><strong>Documentos Adicionales</strong></p>
+
+                                                            <p>
+                                                                <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 60%;"> Nombre</th>
+                                                                            <th style="width: 40%;"></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                            <!-- Mostrar tantos documentos tenga el ticket detalle -->
+                                                                            <?php
+                                                                                foreach ($datos_det as $row_det){ 
+                                                                            ?>
+                                                                                <tr>
+                                                                                    <td><?php echo $row_det["det_nom"]; ?></td>
+                                                                                    <td>
+                                                                                        <a href="../../public/documentos_detalle/<?php echo $row_det["tickd_id"]; ?>/<?php echo $row_det["det_nom"]; ?>" target="_blank" class="btn btn-inline btn-primary btn-sm">Ver</a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php
+                                                                                }
+                                                                            ?>
+                                                                    </tbody>
+                                                                </table>
+                                                            </p>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
                                     </section>
@@ -251,8 +286,40 @@
                 echo json_encode($output);
             }
             break;
-        case "insertdetalle";
-            $ticket->insert_ticketdetalle($_POST["tick_id"],$_POST["usu_id"],$_POST["tickd_descrip"]);  
+        case "insertdetalle":
+            $datos=$ticket->insert_ticketdetalle($_POST["tick_id"],$_POST["usu_id"],$_POST["tickd_descrip"]);
+            if (is_array($datos)==true and count($datos)>0){
+                foreach ($datos as $row){
+                    /* Obtener tikd_id de $datos */
+                    $output["tickd_id"] = $row["tickd_id"];
+                    /* Consultamos si vienen archivos desde la vista */
+                    if (empty($_FILES['files']['name'])){
+
+                    }else{
+                        /* Contar registros */
+                        $countfiles = count($_FILES['files']['name']);
+                        /* Ruta de los documentos */
+                        $ruta = "../public/documentos_detalle/".$output["tickd_id"]."/";
+                        /* Array de archivos */
+                        $files_arr = array();
+                        /* Consultar si la ruta existe en caso no exista la creamos */
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta, 0777, true);
+                        }
+
+                        /* recorrer todos los registros */
+                        for ($index = 0; $index < $countfiles; $index++) {
+                            $doc1 = $_FILES['files']['tmp_name'][$index];
+                            $destino = $ruta.$_FILES['files']['name'][$index];
+
+                            $documento->insert_documento_detalle($output["tickd_id"],$_FILES['files']['name'][$index]);
+
+                            move_uploaded_file($doc1,$destino);
+                        }
+                    }
+                }
+            }
+            echo json_encode($datos);
             break;
         /* Total de ticket para vista de soporte */
         case "total";
