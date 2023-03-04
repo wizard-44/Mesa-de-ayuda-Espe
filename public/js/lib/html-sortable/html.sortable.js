@@ -93,7 +93,7 @@ var _makeGhost = function($draggedItem) {
  * @param [jQuery selection] $draggedItem - the item that the user drags
  * @param [object] ghostOpt - the ghost options
  */
-// TODO: could $draggedItem be replaced by event.target in all instances
+//  could $draggedItem be replaced by event.target in all instances
 var _getGhost = function(event, $draggedItem) {
   // add ghost item & draggedItem to ghost object
   var ghost = _makeGhost($draggedItem);
@@ -232,7 +232,7 @@ var sortable = function(selector, options) {
     hoverClass: false
   }, options);
 
-  /* TODO: maxstatements should be 25, fix and remove line below */
+  /*  maxstatements should be 25, fix and remove line below */
   /*jshint maxstatements:false */
   return $sortables.each(function() {
 
@@ -350,7 +350,7 @@ var sortable = function(selector, options) {
       draggingHeight = null;
     });
     // Handle drop event on sortable & placeholder
-    // TODO: REMOVE placeholder?????
+    //  REMOVE placeholder?????
     $(this).add([placeholder]).on('drop.h5s', function(e) {
       if (!_listsConnected($sortable, $(dragging).parent())) {
         return;

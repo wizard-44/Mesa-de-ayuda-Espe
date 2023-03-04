@@ -51,7 +51,7 @@ $(document).ready(function() {
 function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#ticket_form")[0]);
-    if ($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val()=='' ||  $('#cats_id').val()=='' || $('#prio_id').val()=='' ){
+    if ($('#tick_descrip').summernote('isEmpty') || $('#tick_titulo').val()=='' || $('#cat_id').val()=='' ||  $('#cats_id').val()=='' || $('#prio_id').val()=='' ){
         swal("Advertencia!", "Campos Vacios", "warning");
     }else{
 

@@ -132,7 +132,7 @@ function guardar(e){
 
             /*  Ocultar Modal */
             $("#modal_asignar").modal('hide');
-            /* TODO:Recargar Datatable JS */
+            /* Recargar Datatable JS */
             $('#ticket_data').DataTable().ajax.reload();
         }
     });
@@ -156,15 +156,15 @@ function CambiarEstado(tick_id){
     },
     function(isConfirm) {
         if (isConfirm) {
-            /* TODO: Enviar actualizacion de estado */
+            /*  Enviar actualizacion de estado */
             $.post("../../controller/ticket.php?op=reabrir", {tick_id : tick_id,usu_id : usu_id}, function (data) {
 
             });
 
-            /* TODO:Recargar datatable js */
+            /* Recargar datatable js */
             $('#ticket_data').DataTable().ajax.reload();	
 
-            /* TODO: Mensaje de Confirmacion */
+            /*  Mensaje de Confirmacion */
             swal({
                 title: "Ticket Abierto!",
                 text: "El Ticket ha sido Abierto Nuevamente.",

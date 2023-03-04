@@ -1,7 +1,7 @@
 <?php
-    /* TODO:Cadena de Conexion */
+    /* Cadena de Conexion */
     require_once("../config/conexion.php");
-    /* TODO:Modelo Categoria */
+    /* Modelo Categoria */
     require_once("../models/Categoria.php");
     $categoria = new Categoria();
 

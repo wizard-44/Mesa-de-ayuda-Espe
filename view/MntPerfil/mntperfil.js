@@ -4,7 +4,7 @@ $(document).on("click","#btnactualizar", function(){
  
     /* validamos que los campos no esten vacios antes de guardar */
      if (pass.length == 0 || newpass.length == 0) {
-         swal("Error!", "Campos Vacios", "error");
+        swal("Error!", "Campos Vacios", "error");
      }else{
          /* validamos que la contraseñas sean iguales */
          if (pass==newpass){

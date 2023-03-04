@@ -9,28 +9,32 @@ function init(){
 function guardaryeditar(e){
     e.preventDefault();
 	var formData = new FormData($("#usuario_form")[0]);
-    $.ajax({
-        url: "../../controller/usuario.php?op=guardaryeditar",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(datos){    
-            console.log(datos);
-            $('#usuario_form')[0].reset();
-            /* TODO:Ocultar Modal */
-            $("#modal_nuevo_registro").modal('hide');
-            $('#usuario_data').DataTable().ajax.reload();
+    if ($('#usu_nom').val()=='' || $('#usu_ape').val()=='' || $('#usu_correo').val()=='' ||$('#usu_pass').val()=='' || $('#usu_telf').val()=='' || $('#rol_id').val()==''){
+        swal("Advertencia!", "Campos Vacios", "warning");
+    }else{
+        $.ajax({
+            url: "../../controller/usuario.php?op=guardaryeditar",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(datos){    
+                console.log(datos);
+                $('#usuario_form')[0].reset();
+                /* Ocultar Modal */
+                $("#modal_nuevo_registro").modal('hide');
+                $('#usuario_data').DataTable().ajax.reload();
 
-            /* TODO:Mensaje de Confirmacion */
-            swal({
-                title: "HELPDESK!",
-                text: "COMPLETADO.",
-                type: "success",
-                confirmButtonClass: "btn-success"
-            });
-        }
-    }); 
+                /* Mensaje de Confirmacion */
+                swal({
+                    title: "Helpdesk Usuario!",
+                    text: "Operacion realizada con exito.",
+                    type: "success",
+                    confirmButtonClass: "btn-success"
+                });
+            }
+        });
+    }
 }
 
 $(document).ready(function(){

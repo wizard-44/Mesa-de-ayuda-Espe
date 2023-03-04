@@ -7,7 +7,7 @@ $(document).ready(function(){
     listardetalle(tick_id);
     console.log(tick_id);
 
-    /* TODO: inicializamos input de estrellas */
+    /*  inicializamos input de estrellas */
     $('#tick_estre').on('rating.change', function() {
         console.log($('#tick_estre').val());
     });
@@ -15,7 +15,7 @@ $(document).ready(function(){
 });
 
 function listardetalle(tick_id){
-    /* TODO: Mostra detalle de ticket */
+    /*  Mostra detalle de ticket */
     $.post("../../controller/ticket.php?op=mostrar", { tick_id : tick_id }, function (data) {
         data = JSON.parse(data);
         $('#lblestado').val(data.tick_estado_texto);

@@ -1126,7 +1126,7 @@ class PHPMailer
      */
     public function idnSupported()
     {
-        // @TODO: Write our own "idn_to_ascii" function for PHP <= 5.2.
+        // @ Write our own "idn_to_ascii" function for PHP <= 5.2.
         return function_exists('idn_to_ascii') and function_exists('mb_convert_encoding');
     }
 

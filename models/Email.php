@@ -1,23 +1,23 @@
 <?php
-    /*TODO: librerias necesarias para que el proyecto pueda enviar emails */
+    /* librerias necesarias para que el proyecto pueda enviar emails */
     require('class.phpmailer.php');
     include("class.smtp.php");
 
-    /*TODO: llamada de las clases necesarias que se usaran en el envio del mail */
+    /* llamada de las clases necesarias que se usaran en el envio del mail */
     require_once("../config/conexion.php");
     require_once("../Models/Ticket.php");
 
 class Email extends PHPMailer{
 
-    //TODO: variable que contiene el correo del destinatario
+    // variable que contiene el correo del destinatario
     /* protected $gCorreo = 'aqui tu correo@dominio.com';
     protected $gContrasena = 'aqui tu pass'; */
-    //TODO: variable que contiene la contraseña del destinatario
+    // variable que contiene la contraseña del destinatario
 
     protected $gCorreo = 'alerta.auto@transtotalperu.com';
     protected $gContrasena = '4l3rt4T@m';
 
-    /* TODO:Alertar al momento de generar un ticket */
+    /* Alertar al momento de generar un ticket */
     public function ticket_abierto($tick_id){
         $ticket = new Ticket();
         $datos = $ticket->listar_ticket_x_id($tick_id);
@@ -29,7 +29,7 @@ class Email extends PHPMailer{
             $correo = $row["usu_correo"];
         }
 
-        //TODO: IGual//
+        // IGual//
         $this->IsSMTP();
         $this->Host = 'smtp.office365.com';//Aqui el server
         $this->Port = 587;//Aqui el puerto
@@ -46,8 +46,8 @@ class Email extends PHPMailer{
         $this->IsHTML(true);
         $this->Subject = "Ticket Abierto";
         //Igual//
-        $cuerpo = file_get_contents('../public/NuevoTicket.html'); /*TODO:  Ruta del template en formato HTML */
-        /*TODO: parametros del template a remplazar */
+        $cuerpo = file_get_contents('../public/NuevoTicket.html'); /*  Ruta del template en formato HTML */
+        /* parametros del template a remplazar */
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
         $cuerpo = str_replace("lblNomUsu", $usu, $cuerpo);
         $cuerpo = str_replace("lblTitu", $titulo, $cuerpo);
@@ -58,7 +58,7 @@ class Email extends PHPMailer{
         return $this->Send();
     }
 
-    /* TODO:Alertar al momento de Cerrar un ticket */
+    /* Alertar al momento de Cerrar un ticket */
     public function ticket_cerrado($tick_id){
         $ticket = new Ticket();
         $datos = $ticket->listar_ticket_x_id($tick_id);
@@ -86,8 +86,8 @@ class Email extends PHPMailer{
         $this->IsHTML(true);
         $this->Subject = "Ticket Cerrado";
         //Igual//
-        $cuerpo = file_get_contents('../public/CerradoTicket.html'); /*TODO:  Ruta del template en formato HTML */
-        /*TODO:  parametros del template a remplazar */
+        $cuerpo = file_get_contents('../public/CerradoTicket.html'); /*  Ruta del template en formato HTML */
+        /*  parametros del template a remplazar */
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
         $cuerpo = str_replace("lblNomUsu", $usu, $cuerpo);
         $cuerpo = str_replace("lblTitu", $titulo, $cuerpo);
@@ -98,7 +98,7 @@ class Email extends PHPMailer{
         return $this->Send();
     }
 
-    /* TODO:Alertar al momento de Asignar un ticket */
+    /* Alertar al momento de Asignar un ticket */
     public function ticket_asignado($tick_id){
         $ticket = new Ticket();
         $datos = $ticket->listar_ticket_x_id($tick_id);
@@ -126,8 +126,8 @@ class Email extends PHPMailer{
         $this->IsHTML(true);
         $this->Subject = "Ticket Asignado";
         //Igual//
-        $cuerpo = file_get_contents('../public/AsignarTicket.html'); /*TODO:  Ruta del template en formato HTML */
-        /*TODO:  parametros del template a remplazar */
+        $cuerpo = file_get_contents('../public/AsignarTicket.html'); /*  Ruta del template en formato HTML */
+        /*  parametros del template a remplazar */
         $cuerpo = str_replace("xnroticket", $id, $cuerpo);
         $cuerpo = str_replace("lblNomUsu", $usu, $cuerpo);
         $cuerpo = str_replace("lblTitu", $titulo, $cuerpo);

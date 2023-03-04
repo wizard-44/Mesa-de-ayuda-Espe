@@ -4,7 +4,7 @@
     require_once("../models/documento.php");
     $documento = new Documento();
 
-    /*TODO: opciones del controlador */
+    /* opciones del controlador */
     switch($_GET["op"]){
         /* manejo de json para poder listar en el datatable, formato de json segun documentacion */
         case "listar":

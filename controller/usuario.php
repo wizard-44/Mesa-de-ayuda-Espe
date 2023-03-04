@@ -1,7 +1,7 @@
 <?php
-    /* TODO:Cadena de Conexion */
+    /* Cadena de Conexion */
     require_once("../config/conexion.php");
-    /* TODO:Modelo Categoria */
+    /* Modelo Categoria */
     require_once("../models/Usuario.php");
     $usuario = new Usuario();
 
@@ -118,7 +118,7 @@
             }
             break;
 
-        /*TODO: Controller para actualizar contraseña */
+        /* Controller para actualizar contraseña */
         case "password":
             $usuario->update_usuario_pass($_POST["usu_id"],$_POST["usu_pass"]);
             break;
