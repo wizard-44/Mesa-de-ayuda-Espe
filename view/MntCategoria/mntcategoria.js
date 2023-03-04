@@ -6,12 +6,12 @@ function init(){
     });
 }
 
-/*  Guardar datos de los input */
+/* Guardar datos de los input */
 function guardaryeditar(e){
     e.preventDefault();
 	var formData = new FormData($("#usuario_form")[0]);
     $.ajax({
-        url: "../../controller/prioridad.php?op=guardaryeditar",
+        url: "../../controller/categoria.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -23,7 +23,7 @@ function guardaryeditar(e){
             $("#modalmantenimiento").modal('hide');
             $('#usuario_data').DataTable().ajax.reload();
 
-             /* Mensaje de Confirmacion */
+            /* ensaje de Confirmacion */
             swal({
                 title: "HelpDesk Prioridad!",
                 text: "Operacion realizada con exito.",
@@ -35,6 +35,7 @@ function guardaryeditar(e){
 }
 
 $(document).ready(function(){
+    /* Mostrar listado de registros */
     tabla=$('#usuario_data').dataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -49,7 +50,7 @@ $(document).ready(function(){
                 'pdfHtml5'
                 ],
         "ajax":{
-            url: '../../controller/prioridad.php?op=listar',
+            url: '../../controller/categoria.php?op=listar',
             type : "post",
             dataType : "json",						
             error: function(e){
@@ -88,26 +89,26 @@ $(document).ready(function(){
     }).DataTable(); 
 });
 
-/*  Mostrar informacion segun ID en los inputs */
-function editar(prio_id){
-    $('#mdltitulo').html('Editar Prioridad');
+/* Mostrar informacion segun ID en los inputs */
+function editar(cat_id){
+    $('#mdltitulo').html('Editar Categoria');
 
-    /*  Mostrar Informacion en los inputs */
-    $.post("../../controller/prioridad.php?op=mostrar", {prio_id : prio_id}, function (data) {
+    /* Mostrar Informacion en los inputs */
+    $.post("../../controller/categoria.php?op=mostrar", {cat_id : cat_id}, function (data) {
         data = JSON.parse(data);
-        $('#prio_id').val(data.prio_id);
-        $('#prio_nom').val(data.prio_nom);
+        $('#cat_id').val(data.cat_id);
+        $('#cat_nom').val(data.cat_nom);
     }); 
 
-    /*  Mostrar Modal */
+    /* Mostrar Modal */
     $('#modalmantenimiento').modal('show');
 }
 
 /* Cambiar estado a eliminado en caso de confirmar mensaje */
-function eliminar(prio_id){
+function eliminar(cat_id){
     swal({
-        title: "Eliminar Prioridad",
-        text: "Esta seguro de Eliminar la Prioridad?",
+        title: "Eliminar Categoria",
+        text: "Esta seguro de Eliminar la Categoria?",
         type: "error",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
@@ -117,15 +118,17 @@ function eliminar(prio_id){
     },
     function(isConfirm) {
         if (isConfirm) {
-            $.post("../../controller/prioridad.php?op=eliminar", {prio_id : prio_id}, function (data) {
+            $.post("../../controller/categoria.php?op=eliminar", {cat_id : cat_id}, function (data) {
 
             }); 
 
+            /* Recargar Datatable JS */
             $('#usuario_data').DataTable().ajax.reload();	
 
+            /* Mensaje de Confirmacion */
             swal({
-                title: "Eliminar Prioridad!",
-                text: "La Prioridad ha sido eliminada con exito.",
+                title: "Eliminar Categoria!",
+                text: "La Categoria ha sido eliminada con exito.",
                 type: "success",
                 confirmButtonClass: "btn-success"
             });
@@ -135,8 +138,8 @@ function eliminar(prio_id){
 
 /* Limpiar Inputs */
 $(document).on("click","#btnnuevo", function(){
-    $('#prio_id').val('');
-    $('#mdltitulo').html('Nueva Prioridad');
+    $('#cat_id').val('');
+    $('#mdltitulo').html('Nuevo Registro');
     $('#usuario_form')[0].reset();
     /* Mostrar Modal */
     $('#modalmantenimiento').modal('show');
