@@ -229,7 +229,7 @@
                                                                                 <tr>
                                                                                     <td><?php echo $row_det["det_nom"]; ?></td>
                                                                                     <td>
-                                                                                        <a href="../../public/documentos_detalle/<?php echo $row_det["tickd_id"]; ?>/<?php echo $row_det["det_nom"]; ?>" target="_blank" class="btn btn-inline btn-primary btn-sm">Ver</a>
+                                                                                        <a href="../../public/documentos_detalle/<?php echo $row_det["tickd_id"]; ?>/<?php echo $row_det["det_nom"]; ?>" target="_blank" class="btn btn-inline btn-info btn-sm">Ver</a>
                                                                                     </td>
                                                                                 </tr>
                                                                             <?php

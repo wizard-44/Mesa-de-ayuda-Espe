@@ -2087,6 +2087,9 @@ fieldset[disabled] a.btn {
   color: #fff;
   background-color: #0275d8;
   border-color: #0275d8;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 .btn-primary:hover {
   color: #fff;
@@ -2283,6 +2286,9 @@ fieldset[disabled] a.btn {
   color: #fff;
   background-color: #f0ad4e;
   border-color: #f0ad4e;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 .btn-warning:hover {
   color: #fff;
@@ -2332,6 +2338,9 @@ fieldset[disabled] a.btn {
   color: #fff;
   background-color: #d9534f;
   border-color: #d9534f;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
 .btn-danger:hover {
   color: #fff;

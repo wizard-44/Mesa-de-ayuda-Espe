@@ -9,11 +9,18 @@
             </div>
             <form method="post" id="usuario_form">
                 <div class="modal-body">
-                    <input type="hidden" id="prio_id" name="prio_id">
+                    <input type="hidden" id="cats_id" name="cats_id">
 
                     <div class="form-group">
-                        <label class="form-label" for="prio_nom">Nombre</label>
-                        <input type="text" class="form-control" id="prio_nom" name="prio_nom" placeholder="Ingrese Nombre" required>
+                        <label class="form-label" for="cat_id">Categoria</label>
+                        <select class="select2" id="cat_id" name="cat_id">
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="cats_nom">Nombre</label>
+                        <input type="text" class="form-control" id="cats_nom" name="cats_nom" placeholder="Ingrese Nombre" required>
                     </div>
 
                 </div>
