@@ -11,7 +11,7 @@ function guardaryeditar(e){
     e.preventDefault();
 	var formData = new FormData($("#usuario_form")[0]);
     $.ajax({
-        url: "../../controller/categoria.php?op=guardaryeditar",
+        url: "../../controller/subcategoria.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -23,9 +23,9 @@ function guardaryeditar(e){
             $("#modalmantenimiento").modal('hide');
             $('#usuario_data').DataTable().ajax.reload();
 
-            /* ensaje de Confirmacion */
+            /* Mensaje de Confirmacion */
             swal({
-                title: "HelpDesk Prioridad!",
+                title: "HelpDesk SubCategoria!",
                 text: "Operacion realizada con exito.",
                 type: "success",
                 confirmButtonClass: "btn-success"
@@ -35,7 +35,11 @@ function guardaryeditar(e){
 }
 
 $(document).ready(function(){
-    /* Mostrar listado de registros */
+
+    $.post("../../controller/categoria.php?op=combo",function(data, status){
+        $('#cat_id').html(data);
+    });
+
     tabla=$('#usuario_data').dataTable({
         "aProcessing": true,
         "aServerSide": true,
@@ -50,7 +54,7 @@ $(document).ready(function(){
                 'pdfHtml5'
                 ],
         "ajax":{
-            url: '../../controller/categoria.php?op=listar',
+            url: '../../controller/subcategoria.php?op=listar',
             type : "post",
             dataType : "json",						
             error: function(e){
@@ -90,25 +94,26 @@ $(document).ready(function(){
 });
 
 /* Mostrar informacion segun ID en los inputs */
-function editar(cat_id){
-    $('#mdltitulo').html('Editar Categoria');
+function editar(cats_id){
+    $('#mdltitulo').html('Editar SubCategoria');
 
     /* Mostrar Informacion en los inputs */
-    $.post("../../controller/categoria.php?op=mostrar", {cat_id : cat_id}, function (data) {
+    $.post("../../controller/subcategoria.php?op=mostrar", {cats_id : cats_id}, function (data) {
         data = JSON.parse(data);
-        $('#cat_id').val(data.cat_id);
-        $('#cat_nom').val(data.cat_nom);
-    }); 
+        $('#cats_id').val(data.cats_id);
+        $('#cat_id').val(data.cat_id).trigger('change');
+        $('#cats_nom').val(data.cats_nom);
+    });
 
     /* Mostrar Modal */
     $('#modalmantenimiento').modal('show');
 }
 
 /* Cambiar estado a eliminado en caso de confirmar mensaje */
-function eliminar(cat_id){
+function eliminar(cats_id){
     swal({
-        title: "Eliminar Categoria",
-        text: "Esta seguro de Eliminar la Categoria?",
+        title: "Eliminar SubCategoria",
+        text: "Esta seguro de Eliminar la SubCategoria?",
         type: "error",
         showCancelButton: true,
         confirmButtonClass: "btn-danger",
@@ -118,14 +123,12 @@ function eliminar(cat_id){
     },
     function(isConfirm) {
         if (isConfirm) {
-            $.post("../../controller/categoria.php?op=eliminar", {cat_id : cat_id}, function (data) {
+            $.post("../../controller/subcategoria.php?op=eliminar", {cats_id : cats_id}, function (data) {
 
             }); 
 
-            /* Recargar Datatable JS */
             $('#usuario_data').DataTable().ajax.reload();	
 
-            /* Mensaje de Confirmacion */
             swal({
                 title: "Eliminar Categoria!",
                 text: "La Categoria ha sido eliminada con exito.",
@@ -138,8 +141,9 @@ function eliminar(cat_id){
 
 /* Limpiar Inputs */
 $(document).on("click","#btnnuevo", function(){
-    $('#cat_id').val('');
-    $('#mdltitulo').html('Nueva Categoria');
+    $('#cats_id').val('');
+    $('#cat_id').val('').trigger('change');
+    $('#mdltitulo').html('Nueva SubCategoria');
     $('#usuario_form')[0].reset();
     /* Mostrar Modal */
     $('#modalmantenimiento').modal('show');

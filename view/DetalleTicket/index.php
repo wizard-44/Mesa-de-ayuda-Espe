@@ -128,8 +128,8 @@
                     </div>
 
                     <div class="col-lg-12">
-                        <button type="button" id="btnenviar" class="btn btn-inline btn-primary">Enviar</button>
-                        <button type="button" id="btncerrarticket" class="btn btn-inline btn-danger">Cerrar Ticket</button>
+                        <button type="button" id="btnenviar" class="btn btn-inline btn-success">Enviar</button>
+                        <button type="button" id="btncerrarticket" class="btn btn-inline btn-info">Cerrar Ticket</button>
                     </div>
                 </div>
             </div>
