@@ -1,7 +1,7 @@
 <?php
     class Prioridad extends Conectar{
 
-        /* TODO:Todos los registros */
+        /* Todos los registros */
         public function get_prioridad(){
             $conectar= parent::conexion();
             parent::set_names();

@@ -6187,7 +6187,7 @@ function InflateState() {
   this.dmax = 0;              /* zlib header max distance (INFLATE_STRICT) */
   this.check = 0;             /* protected copy of check value */
   this.total = 0;             /* protected copy of output count */
-  // TODO: may be {}
+  //  may be {}
   this.head = null;           /* where to save gzip header information */
 
   /* sliding window */
@@ -6719,7 +6719,7 @@ function inflate(strm, flush) {
         if (have === 0) { break inf_leave; }
         copy = 0;
         do {
-          // TODO: 2 or 1 bytes?
+          //  2 or 1 bytes?
           len = input[next + copy++];
           /* use constant limit because in js we should not preallocate memory */
           if (state.head && len &&

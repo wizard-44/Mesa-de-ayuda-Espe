@@ -119,7 +119,7 @@
                         </fieldset>
                     </div>
 
-                    <!-- TODO: Agregar archivos adjuntos -->
+                    <!--  Agregar archivos adjuntos -->
                     <div class="col-lg-12">
                         <fieldset class="form-group">
                         <label class="form-label semibold" for="fileElem">Documentos Adicionales</label>

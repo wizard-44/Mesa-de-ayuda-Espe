@@ -29,7 +29,7 @@
         //     return $resultado=$sql->fetchAll();
         // }
 
-        // /* TODO:Insert */
+        // /* Insert */
         // public function insert_subcategoria($cat_id,$cats_nom){
         //     $conectar= parent::conexion();
         //     parent::set_names();
@@ -41,7 +41,7 @@
         //     return $resultado=$sql->fetchAll();
         // }
 
-        // /* TODO:Update */
+        // /* Update */
         // public function update_subcategoria($cats_id,$cat_id,$cats_nom){
         //     $conectar= parent::conexion();
         //     parent::set_names();
@@ -58,7 +58,7 @@
         //     return $resultado=$sql->fetchAll();
         // }
 
-        // /* TODO:Delete */
+        // /* Delete */
         // public function delete_subcategoria($cats_id){
         //     $conectar= parent::conexion();
         //     parent::set_names();
@@ -72,7 +72,7 @@
         //     return $resultado=$sql->fetchAll();
         // }
 
-        // /* TODO:Registro x id */
+        // /* Registro x id */
         // public function get_subcategoria_x_id($cats_id){
         //     $conectar= parent::conexion();
         //     parent::set_names();

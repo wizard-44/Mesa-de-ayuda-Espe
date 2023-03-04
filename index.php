@@ -49,7 +49,7 @@
 
                     <header class="sign-title" id="lbltitulo">Usuario</header>
 
-                    <!-- TODO: validar segun valor al iniciar session -->
+                    <!--  validar segun valor al iniciar session -->
                     <?php
                         if (isset($_GET["m"])){
                             switch($_GET["m"]){

@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="rol_id">Rol</label>
-                        <select class="select2" id="rol_id" name="rol_id">
+                        <select class="select2" id="rol_id" name="rol_id" required>
                             <option value="1">Usuario</option>
                             <option value="2">Soporte</option>
                         </select>

@@ -22,7 +22,7 @@
  * Or take a clean reset.css (see http://meyerweb.com/eric/tools/css/reset/)
  */
 
-/* TODO: investigate
+/*  investigate
  * Does not work properly with css rule:
  * html {
  *      overflow: -moz-scrollbars-vertical;
@@ -59,10 +59,10 @@
       dragHandle: '.table-handle', // handle for moving cols, if not exists the whole 'th' is the handle
       maxMovingRows: 40,           // 1 -> only header. 40 row should be enough, the rest is usually not in the viewport
       excludeFooter: false,        // excludes the footer row(s) while moving other columns. Make sense if there is a footer with a colspan. */
-      onlyHeaderThreshold: 100,    // TODO:  not implemented yet, switch automatically between entire col moving / only header moving
+      onlyHeaderThreshold: 100,    //   not implemented yet, switch automatically between entire col moving / only header moving
       dragaccept: null,            // draggable cols -> default all
       persistState: null,          // url or function -> plug in your custom persistState function right here. function call is persistState(originalTable)
-      restoreState: null,          // JSON-Object or function:  some kind of experimental aka Quick-Hack TODO: do it better
+      restoreState: null,          // JSON-Object or function:  some kind of experimental aka Quick-Hack  do it better
       exact: true,                 // removes pixels, so that the overlay table width fits exactly the original table width
       clickDelay: 10,              // ms to wait before rendering sortable list and delegating click event
       containment: null,           // @see http://api.jqueryui.com/sortable/#option-containment, use it if you want to move in 2 dimesnions (together with axis: null)
@@ -243,7 +243,7 @@
           row = row.add(thtb.find('> tr > td:nth-child(' + (i + 1) + ')').slice(0, _this.options.maxMovingRows - 1));
         }
         row.each(function(j) {
-          // TODO: May cause duplicate style-Attribute
+          //  May cause duplicate style-Attribute
           var row_content = $(this).clone().wrap('<div></div>').parent().html();
           if (row_content.toLowerCase().indexOf('<th') === 0) sortableHtml += "<thead>";
           sortableHtml += '<tr ' + rowAttrsArr[j] + '" style="height:' + heightArr[j] + 'px;">';

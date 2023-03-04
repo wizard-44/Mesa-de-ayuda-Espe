@@ -54,7 +54,7 @@
             $ticket->update_ticket($_POST["tick_id"]);
             $ticket->insert_ticketdetalle_cerrar($_POST["tick_id"],$_POST["usu_id"]);
             break;
-        /* TODO: Reabrimos el ticket y adicionamos una linea adicional */
+        /*  Reabrimos el ticket y adicionamos una linea adicional */
         case "reabrir":
             $ticket->reabrir_ticket($_POST["tick_id"]);
             $ticket->insert_ticketdetalle_reabrir($_POST["tick_id"],$_POST["usu_id"]);
