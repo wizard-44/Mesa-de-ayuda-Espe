@@ -121,10 +121,30 @@ $(document).on("click","#btnenviar",function(){
     if ($('#tickd_descrip').summernote('isEmpty')){
         swal("Advertencia!", "Campo de Descripción Vacio", "warning");
     }else{
-        $.post("../../controller/ticket.php?op=insertdetalle", { tick_id : tick_id, usu_id : usu_id, tickd_descrip : tickd_descrip }, function (data) {
-            listardetalle(tick_id);
-            $('#tickd_descrip').summernote("reset");
-            swal("Correcto!", "Registrado Correctamente: ","success");
+        var formData = new FormData();
+        formData.append('tick_id',tick_id);
+        formData.append('usu_id',usu_id);
+        formData.append('tickd_descrip',tickd_descrip);
+        var totalfiles = $('#fileElem').val().length;
+        /* Agregamos los documentos adjuntos en caso hubiera */
+        for (var i = 0; i < totalfiles; i++) {
+            formData.append("files[]", $('#fileElem')[0].files[i]);
+        }
+        /* Insertar detalle */
+        $.ajax({
+            url: "../../controller/ticket.php?op=insertdetalle",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(data){
+                console.log(data);
+                listardetalle(tick_id);
+                /* Limpiar inputfile */
+                $('#fileElem').val('');
+                $('#tickd_descrip').summernote('reset');
+                swal("Correcto!", "Registrado Correctamente", "success");
+            }
         });
     }
 });

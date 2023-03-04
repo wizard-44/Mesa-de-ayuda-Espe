@@ -68,6 +68,7 @@
                 tm_ticket.fech_cierre,
                 tm_ticket.tick_estre,
                 tm_ticket.tick_coment,
+                tm_ticket.usu_asig,
                 tm_usuario.usu_nom,
                 tm_usuario.usu_ape,
                 tm_usuario.usu_correo,
@@ -145,13 +146,41 @@
         public function insert_ticketdetalle($tick_id,$usu_id,$tickd_descrip){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="INSERT INTO td_ticketdetalle (tickd_id, tick_id, usu_id, tickd_descrip, fech_crea, est) VALUES (NULL, ?, ?, ?, now(), '1');";
+
+            // /* TODO:Obtener usuario asignado del tick_id */
+            // $ticket = new Ticket();
+            // $datos = $ticket->listar_ticket_x_id($tick_id);
+            // foreach ($datos as $row){
+            //     $usu_asig = $row["usu_asig"];
+            //     $usu_crea = $row["usu_id"];
+            // }
+
+            // /* TODO: si Rol es 1 = Usuario insertar alerta para usuario soporte */
+            // if ($_SESSION["rol_id"]==1){
+            //     /* TODO: Guardar Notificacion de nuevo Comentario */
+            //     $sql0="INSERT INTO tm_notificacion (not_id,usu_id,not_mensaje,tick_id,est) VALUES (null, $usu_asig ,'Tiene una nueva respuesta del usuario con nro de ticket : ',$tick_id,2)";
+            //     $sql0=$conectar->prepare($sql0);
+            //     $sql0->execute();
+            // /* TODO: Else Rol es = 2 Soporte Insertar alerta para usuario que genero el ticket */
+            // }else{
+            //     /* TODO: Guardar Notificacion de nuevo Comentario */
+            //     $sql0="INSERT INTO tm_notificacion (not_id,usu_id,not_mensaje,tick_id,est) VALUES (null,$usu_crea,'Tiene una nueva respuesta de soporte del ticket Nro : ',$tick_id,2)";
+            //     $sql0=$conectar->prepare($sql0);
+            //     $sql0->execute();
+            // }
+
+            $sql="INSERT INTO td_ticketdetalle (tickd_id,tick_id,usu_id,tickd_descrip,fech_crea,est) VALUES (NULL,?,?,?,now(),'1');";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$tick_id);
-            $sql->bindValue(2,$usu_id);
-            $sql->bindValue(3,$tickd_descrip);
+            $sql->bindValue(1, $tick_id);
+            $sql->bindValue(2, $usu_id);
+            $sql->bindValue(3, $tickd_descrip);
             $sql->execute();
-            return $resultado=$sql->fetchAll();
+
+            /* TODO: Devuelve el ultimo ID (Identty) ingresado */
+            $sql1="select last_insert_id() as 'tickd_id';";
+            $sql1=$conectar->prepare($sql1);
+            $sql1->execute();
+            return $resultado=$sql1->fetchAll(pdo::FETCH_ASSOC);
         }
         
         public function insert_ticketdetalle_cerrar($tick_id,$usu_id){
@@ -300,5 +329,6 @@
             return $resultado=$sql->fetchAll();
         }
 
+        
     }
 ?>
