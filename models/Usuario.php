@@ -33,21 +33,22 @@
             }
         }
 
-        public function insert_usuario($usu_nom,$usu_ape,$usu_correo,$usu_pass,$rol_id){
+        public function insert_usuario($usu_nom,$usu_ape,$usu_correo,$usu_pass,$rol_id,$usu_telf){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="INSERT INTO  tm_usuario (usu_id, usu_nom, usu_ape, usu_correo, usu_pass, rol_id, fech_crea , fecha_mod, fecha_elim, est) VALUES (NULL, ?, ?, ?, MD5(?), ?, now(), NULL, NULL, '1');";
+            $sql="INSERT INTO  tm_usuario (usu_id, usu_nom, usu_ape, usu_correo, usu_pass, rol_id, usu_telf , fech_crea , fecha_mod, fecha_elim, est) VALUES (NULL, ?, ?, ?, MD5(?), ?, ?,now(), NULL, NULL, '1');";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$usu_nom);
             $sql->bindValue(2,$usu_ape);
             $sql->bindValue(3,$usu_correo);
             $sql->bindValue(4,$usu_pass);
             $sql->bindValue(5,$rol_id);
+            $sql->bindValue(6,$usu_telf);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
 
-        public function update_usuario($usu_id,$usu_nom,$usu_ape,$usu_correo,$usu_pass,$rol_id){
+        public function update_usuario($usu_id,$usu_nom,$usu_ape,$usu_correo,$usu_pass,$rol_id,$usu_telf){
             $conectar= parent::conexion();
             parent::set_names();
             $sql="UPDATE tm_usuario SET
@@ -55,7 +56,8 @@
                 usu_ape=?,
                 usu_correo=?,
                 usu_pass=?,
-                rol_id=?
+                rol_id=?,
+                usu_telf=?
                 WHERE
                 usu_id=?";
             $sql=$conectar->prepare($sql);
@@ -64,7 +66,8 @@
             $sql->bindValue(3,$usu_correo);
             $sql->bindValue(4,$usu_pass);
             $sql->bindValue(5,$rol_id);
-            $sql->bindValue(6,$usu_id);
+            $sql->bindValue(6,$usu_telf);
+            $sql->bindValue(7,$usu_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
