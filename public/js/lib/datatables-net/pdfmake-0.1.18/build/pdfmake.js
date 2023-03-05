@@ -436,7 +436,7 @@
 
 		textDecorator.drawBackground(line, x, y, pdfKitDoc);
 
-		//TODO: line.optimizeInlines();
+		// line.optimizeInlines();
 		for(var i = 0, l = line.inlines.length; i < l; i++) {
 			var inline = line.inlines[i];
 
@@ -484,7 +484,7 @@
 	}
 
 	function renderVector(vector, pdfDoc) {
-		//TODO: pdf optimization (there's no need to write all properties everytime)
+		// pdf optimization (there's no need to write all properties everytime)
 		pdfDoc.lineWidth(vector.lineWidth || 1);
 		if (vector.dash) {
 			pdfDoc.dash(vector.dash.length, { space: vector.dash.space || vector.dash.length });
@@ -495,7 +495,7 @@
 		pdfDoc.strokeOpacity(vector.strokeOpacity || 1);
 		pdfDoc.lineJoin(vector.lineJoin || 'miter');
 
-		//TODO: clipping
+		// clipping
 
 		switch(vector.type) {
 			case 'ellipse':
@@ -2653,7 +2653,7 @@
 			self.processNode(item);
 			addAll(node.positions, item.positions);
 
-			//TODO: paragraph gap
+			// paragraph gap
 		});
 	};
 
@@ -2848,8 +2848,8 @@
 		var height = node._minHeight;
 
 		if (this.writer.context().availableHeight < height) {
-			// TODO: support for canvas larger than a page
-			// TODO: support for other overflow methods
+			//  support for canvas larger than a page
+			//  support for other overflow methods
 
 			this.writer.moveToNextPage();
 		}
@@ -14420,7 +14420,7 @@
 		var self = this;
 
 		return this.styleStack.auto(node, function() {
-			// TODO: refactor + rethink whether this is the proper way to handle margins
+			//  refactor + rethink whether this is the proper way to handle margins
 			node._margin = getNodeMargin(node);
 
 			if (node.columns) {
@@ -14595,7 +14595,7 @@
 			marker = { _inlines: this.textTools.buildInlines(counter, styleStack).items };
 		}
 		else {
-			// TODO: ascender-based calculations
+			//  ascender-based calculations
 			var radius = gapSize.fontSize / 6;
 			marker = {
 				canvas: [ {
@@ -14632,7 +14632,7 @@
 
 			if (!nextItem.ol && !nextItem.ul) {
 				nextItem.listMarker = this.buildMarker(isOrdered, nextItem.counter || marker, style, node._gapSize);
-			}  // TODO: else - nested lists numbering
+			}  //  else - nested lists numbering
 
 			node._minWidth = Math.max(node._minWidth, items[i]._minWidth + node._gapSize.width);
 			node._maxWidth = Math.max(node._maxWidth, items[i]._maxWidth + node._gapSize.width);
@@ -15257,7 +15257,7 @@
 				fragment.xOffset = forcedX;
 				fragment.yOffset = forcedY;
 
-				//TODO: vectors can influence height in some situations
+				// vectors can influence height in some situations
 				if(nbPages > 1) {
 					// on out-of-context blocs (headers, footers, background) height should be the whole DocumentContext height
 					if (forcedX !== undefined || forcedY !== undefined) {
@@ -15291,7 +15291,7 @@
 
 		rep.xOffset = this.originalX;
 
-		//TODO: vectors can influence height in some situations
+		// vectors can influence height in some situations
 		rep.height = unbreakableContext.y;
 
 		return rep;
@@ -15410,7 +15410,7 @@
 		return column.width === null || column.width === undefined || column.width === '*' || column.width === 'star';
 	}
 
-	//TODO: refactor and reuse in measureTable
+	// refactor and reuse in measureTable
 	function measureMinMax(columns) {
 		var result = { min: 0, max: 0 };
 
@@ -15658,7 +15658,7 @@
 	      if (writer.context().page != ys[yi].page) {
 	        writer.context().page = ys[yi].page;
 
-	        //TODO: buggy, availableHeight should be updated on every pageChanged event
+	        // buggy, availableHeight should be updated on every pageChanged event
 	        // TableProcessor should be pageChanged listener, instead of processRow
 	        this.reservedAtBottom = 0;
 	      }
@@ -15981,7 +15981,7 @@
 	TextTools.prototype.sizeOfString = function(text, styleContextStack) {
 		text = text.replace('\t', '    ');
 
-		//TODO: refactor - extract from measure
+		// refactor - extract from measure
 		var fontName = getStyleProperty({}, styleContextStack, 'font', 'Roboto');
 		var fontSize = getStyleProperty({}, styleContextStack, 'fontSize', 12);
 		var bold = getStyleProperty({}, styleContextStack, 'bold', false);
@@ -16033,7 +16033,7 @@
 
 	function copyStyle(source, destination) {
 		destination = destination || {};
-		source = source || {}; //TODO: default style
+		source = source || {}; // default style
 
 		for(var key in source) {
 			if (key != 'text' && source.hasOwnProperty(key)) {
@@ -16081,7 +16081,7 @@
 		return results;
 	}
 
-	//TODO: support for other languages (currently only polish is supported)
+	// support for other languages (currently only polish is supported)
 	var diacriticsMap = { 'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z', 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
 	// '  << atom.io workaround
 
@@ -16129,7 +16129,7 @@
 
 			var font = fontProvider.provideFont(fontName, bold, italics);
 
-			// TODO: character spacing
+			//  character spacing
 			item.width = font.widthOfString(removeDiacritics(item.text), fontSize);
 			item.height = font.lineHeight(fontSize) * lineHeight;
 
@@ -24438,7 +24438,7 @@
 
 	function writeAfterEnd(stream, state, cb) {
 	  var er = new Error('write after end');
-	  // TODO: defer error events consistently everywhere, not just the cb
+	  //  defer error events consistently everywhere, not just the cb
 	  stream.emit('error', er);
 	  process.nextTick(function() {
 	    cb(er);
@@ -27992,7 +27992,7 @@
 	  this.dmax = 0;              /* zlib header max distance (INFLATE_STRICT) */
 	  this.check = 0;             /* protected copy of check value */
 	  this.total = 0;             /* protected copy of output count */
-	  // TODO: may be {}
+	  //  may be {}
 	  this.head = null;           /* where to save gzip header information */
 
 	  /* sliding window */
@@ -28524,7 +28524,7 @@
 	        if (have === 0) { break inf_leave; }
 	        copy = 0;
 	        do {
-	          // TODO: 2 or 1 bytes?
+	          //  2 or 1 bytes?
 	          len = input[next + copy++];
 	          /* use constant limit because in js we should not preallocate memory */
 	          if (state.head && len &&

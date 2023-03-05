@@ -14,7 +14,10 @@
 }
 
 .barra_espe{
-    background: #000;
+  background: #000;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .barra_espe2{
@@ -22,6 +25,9 @@
   text-align: right;
   color: white;
   height: 50px;
+  width: 100%;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .label:empty {
@@ -6308,12 +6314,11 @@ var.result-container {
   color: #0082c6;
 }
 .page-center {
-  display: table;
   width: 100%;
   border-collapse: collapse;
 }
 .page-center-in {
-  display: table-cell;
+  align-items: center;
   vertical-align: middle;
   padding: 15px 0;
 }
@@ -6468,7 +6473,7 @@ hr.margin-4 {
   position: relative;
 }
 .dropdown.dropdown-typical a.dropdown-toggle {
-  color: #343434;
+  color: white;
   font-weight: 600;
   padding-right: 15px;
   padding-left: 15px;
@@ -10765,7 +10770,7 @@ body.modal-open {
   outline: 0 !important;
 }
 body {
-  background: white;
+  background: #d8f3dc;
 }
 .site-header-search {
   width: 100%;
@@ -10837,7 +10842,7 @@ body {
   left: 0;
   width: 100%;
   height: 80px;
-  background: #fff;
+  background: #006935;
   border-bottom: solid 1px #c5d6de;
   padding: 20px 15px 0 0;
   z-index: 80;

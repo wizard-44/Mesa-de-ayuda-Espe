@@ -10,8 +10,8 @@
                 $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=helpdesk","root","");
                 return $conectar;
             } catch (Exception $e) {
-                print "!Error BD! " . $e->getMessage() . "<br/>";
-                die();
+                print "¡Error BD!: " . $e->getMessage() . "<br/>";
+				die();
             }
         }
 
@@ -19,7 +19,7 @@
             return $this->dbh->query("SET NAMES 'utf8'");
         }
 
-        public function ruta(){
+        public static function ruta(){
             return "http://localhost/MESA-DE-AYUDA-ESPE/";
         }
     }

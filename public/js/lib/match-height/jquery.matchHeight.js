@@ -106,7 +106,7 @@
                 group.elements = group.elements.not(that);
             });
 
-            // TODO: cleanup empty groups
+            //  cleanup empty groups
 
             return this;
         }
