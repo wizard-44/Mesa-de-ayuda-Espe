@@ -129,6 +129,15 @@
 
                     <div class="col-lg-12">
                         <button type="button" id="btnenviar" class="btn btn-inline btn-success">Enviar</button>
+                        
+                        <?php
+                            if($_SESSION["rol_id"]==2){
+                                ?>
+                                <button type="button" id="btnchatgpt" class="btn btn-rounded btn-inline btn-secondary">ChatGpt</button>
+                                <?php
+                            }
+                        ?>
+
                         <button type="button" id="btncerrarticket" class="btn btn-inline btn-info">Cerrar Ticket</button>
                     </div>
                 </div>
