@@ -19,3 +19,6 @@
 
 	<!-- SCript para el Select2 -->
 	<script src="../../public/js/lib/select2/select2.full.min.js"></script>
+
+	<!-- Script Libreria Notify Bootstrap -->
+<script src="../../public/js/lib/bootstrap-notify/bootstrap-notify.min.js"></script>

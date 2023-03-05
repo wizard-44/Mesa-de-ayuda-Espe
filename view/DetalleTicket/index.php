@@ -140,6 +140,8 @@
         require_once("../MainJS/js.php");
     ?>
     <script type="text/javascript" src="detalleticket.js"></script>
+
+    <script type="text/javascript" src="../notificacion.js"></script>
 	
 </body>
 </html>
