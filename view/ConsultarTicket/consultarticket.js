@@ -145,7 +145,7 @@ function ver(tick_id){
 /* Reabrir ticket */
 function CambiarEstado(tick_id){
     swal({
-        title: "HelpDesk",
+        title: "Reabrir Ticket",
         text: "Esta seguro de Reabrir el Ticket?",
         type: "warning",
         showCancelButton: true,

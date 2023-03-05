@@ -32,4 +32,3 @@
 
 	<!-- Estilos para Select2 -->
 	<link rel="stylesheet" href="../../public/css/separate/vendor/select2.min.css">
-

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <?php require_once("../MainHead/head.php");?>
-	<title>AnderCode</>::Mantenimiento SubCategoria</title>
+	<title>Mantenimiento SubCategoria</title>
 </head>
 <body class="with-side-menu">
 
