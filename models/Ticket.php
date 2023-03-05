@@ -72,6 +72,7 @@
                 tm_usuario.usu_nom,
                 tm_usuario.usu_ape,
                 tm_usuario.usu_correo,
+                tm_usuario.usu_telf,
                 tm_categoria.cat_nom,
                 tm_subcategoria.cats_nom,
                 tm_ticket.prio_id,
