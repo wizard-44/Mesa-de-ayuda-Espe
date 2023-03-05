@@ -194,6 +194,13 @@ $(document).on("click","#btncerrarticket",function(){
     });
 });
 
+$(document).on("click","#btnchatgpt", function(){
+    var tick_id = getUrlParameter('ID');
+    $.post("../../controller/chatgpt.php?op=respuestaia", {tick_id : tick_id}, function (data) {
+        $('#tickd_descrip').summernote ('code', data);
+    });
+});
+
 function listardetalle(tick_id){
 
     $.post("../../controller/ticket.php?op=listardetalle", { tick_id : tick_id }, function (data) {
